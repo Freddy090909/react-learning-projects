@@ -16,6 +16,7 @@ export default defineConfig({
   },
   fmt: {},
   lint: {
+    ignorePatterns: [".agents/skills/**"],
     plugins: ["react", "typescript", "oxc"],
     rules: {
       "react/rules-of-hooks": "error",
@@ -27,6 +28,14 @@ export default defineConfig({
       ],
       "vite-plus/prefer-vite-plus-imports": "error",
     },
+    overrides: [
+      {
+        files: ["src/shadcn/**"],
+        rules: {
+          "react/only-export-components": "off",
+        },
+      },
+    ],
     options: {
       typeAware: true,
       typeCheck: true,
