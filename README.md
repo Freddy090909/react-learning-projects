@@ -1,4 +1,37 @@
-# React + TypeScript + Vite
+# React learning projects
+
+A shared React site for independent projects, built with TypeScript, React Router, and Vite+.
+
+## Getting started
+
+```sh
+vp install
+vp run dev
+```
+
+The home page lists every project. Each project has its own nested routes:
+
+| Project | Overview          | Details                   |
+| ------- | ----------------- | ------------------------- |
+| One     | `/projects/one`   | `/projects/one/details`   |
+| Two     | `/projects/two`   | `/projects/two/details`   |
+| Three   | `/projects/three` | `/projects/three/details` |
+
+## Adding a project or page
+
+1. Create a folder in `src/projects/` with page components and a `routes.ts` file. Use an existing project as a starting point. Lazy-loaded page modules export a component named `Component`.
+2. Register the project in `src/projects/index.ts` with its slug, name, description, navigation items, and routes. This automatically adds it to the home page, main navigation, and router.
+3. Add subroutes in that project's `routes.ts`. Add a matching navigation item to the registry for any page that should appear in the project's tabs. Navigation paths are relative to the project root; `.` links to its overview.
+
+`src/layouts/site-layout.tsx` owns the shared site navigation. `src/layouts/project-layout.tsx` owns the project heading, tabs, and nested page outlet. Keep project-specific components and styles in the project's folder.
+
+## Validation and deployment
+
+Run `vp check`, `vp test`, and `vp run build`. There are no automated tests in the initial scaffold.
+
+When deploying, configure your host to serve `index.html` for unknown paths so direct links and refreshes on nested routes work with browser routing.
+
+## Original starter setup
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
